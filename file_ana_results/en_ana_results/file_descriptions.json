@@ -1,0 +1,57 @@
+{
+    "id5": {
+        "data_type": "txt",
+        "description": "安全性を軸としたAI導入の総合パートナーとしてのAnthropicとClaude Mythosの技術的進化",
+        "path": "./DataFolder/Anthropic.pdf"
+    },
+    "id6": {
+        "data_type": "image",
+        "description": "Pixel Art Character Portrait",
+        "path": "./DataFolder/caractorImage.png"
+    },
+    "id7": {
+        "data_type": "image",
+        "description": "Blush Rose on Rustic Wood and Linen",
+        "path": "./DataFolder/couleur-rose-2378156.jpg"
+    },
+    "id8": {
+        "data_type": "txt",
+        "description": "エルドラ・諸島連合の「ブルーエコノミー」と「分散型民主主義」に基づく社会構造、課題、および今後の展望",
+        "path": "./DataFolder/Federation_of_Eldora_Islands.pdf"
+    },
+    "id9": {
+        "data_type": "txt",
+        "description": "ハマタマナの生態的特徴から見る多角的な利用価値の分析",
+        "path": "./DataFolder/flower_report.pdf"
+    },
+    "id10": {
+        "data_type": "code",
+        "description": "Code Review and Analysis of Deep Learning GAN Workflow for Improved Stability and Reproducibility",
+        "path": "./DataFolder/GANPrototype.py"
+    },
+    "id11": {
+        "data_type": "image",
+        "description": "Vibrant Red Rose Against Black Background",
+        "path": "./DataFolder/josch13-rose-320868.jpg"
+    },
+    "id15": {
+        "data_type": "image",
+        "description": "Vibrant Blue Flowers Against Neutral Background",
+        "path": "./DataFolder/pezibear-liverflower-1393813.jpg"
+    },
+    "id16": {
+        "data_type": "txt",
+        "description": "霧降る森の「琥珀包み」：土地の恵みと文化が織りなす深みのある祝祭パイ",
+        "path": "./DataFolder/pie_recipe.pdf"
+    },
+    "id17": {
+        "data_type": "code",
+        "description": "キーボード入力に基づくシンプル村のRPG対話シミュレーション",
+        "path": "./DataFolder/RPG.html"
+    },
+    "id18": {
+        "data_type": "code",
+        "description": "テトリスゲームの実装：Canvas APIによる物理シミュレーション、ゲームロジック、衝突判定、およびライン消去",
+        "path": "./DataFolder/tetoris.html"
+    }
+}

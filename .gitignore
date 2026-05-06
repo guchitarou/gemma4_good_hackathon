@@ -1,0 +1,8 @@
+DataFolder
+
+my_pylate-index/jacolbert-index
+my_pylate-index/jacolbert-single-index
+
+backup
+utils/__pycache__
+__pycache__

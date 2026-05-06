@@ -1,0 +1,20 @@
+summary_txt:
+  ja: |
+    次の文章の要約文を出力せよ。
+  en: |
+    Output a summary of the following text.
+
+  
+summary_title:
+  ja: |
+    絶対に文章を出力しないこと。次の要約文をもとに、内容を説明するタイトルをのみ出力せよ。なるべく文章内の単語を使うこと。
+  en: |
+    Do not output any sentences under any circumstances. Based on the following summary, output only a title that describes the content. Use words from the text as much as possible.
+
+summary_img:
+  ja: |
+    次の画像を解析し、概要のタイトルのみ端的に出力せよ
+  en: |
+    Analyze the following image and output only a concise overview title.
+
+
