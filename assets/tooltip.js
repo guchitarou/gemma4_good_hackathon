@@ -9,6 +9,7 @@ function initTooltip() {
 
     const tooltip = document.getElementById('tooltip');
     if (!tooltip) {
+        console.log("[initTooltip] tooltip要素が見つからない。300ms後にリトライ...");
         setTimeout(initTooltip, 300);
         return;
     }
@@ -24,18 +25,18 @@ function initTooltip() {
         const edge = e.target;
         const src  = edge.data('source');
         const tgt  = edge.data('target');
-        const rel  = edge.data('label') || '関係なし';
+        const rel = edge.data('label') || '関係なし';
         tooltip.innerText = `${rel}`;
         tooltip.style.display = 'block';
     });
 
     // エッジから離れたら非表示
-    cy.on('mouseout', 'edge', function(e) {
+    cy.on('mouseout', 'edge', function (e) {
         tooltip.style.display = 'none';
     });
 }
 
 // DOM構築後に実行
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initTooltip();
 });

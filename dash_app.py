@@ -145,7 +145,7 @@ app.layout = html.Div([
             ], style={"margin": "8px 20px"}),
             html.Div(id="tooltip", style={
                 "position": "fixed",
-                "background": "#0d2b5e",
+                "background": "#21252b",
                 "color": "#cce0ff",
                 "padding": "6px 12px",
                 "borderRadius": "6px",
@@ -176,7 +176,7 @@ app.layout = html.Div([
                     html.H4("File Details", style={"marginTop": 0}),
                     html.Div(id="detail-panel",
                          children="Please click on a node.",
-                         style={"background": "#0d2b5e", "minHeight": "20rem", "whiteSpace": "pre-wrap", "fontSize": "1rem"}),
+                         style={"background": "#21252b", "minHeight": "20rem", "whiteSpace": "pre-wrap", "fontSize": "1rem"}),
                 ], style={"width": "70%",}),
                 html.Div([
                     html.H4("Drop Files Here", style={"marginTop": 0}),
@@ -201,7 +201,7 @@ app.layout = html.Div([
                             "textAlign": "center",
                             "color": "#cce0ff",
                             "height":"20rem",
-                            "backgroundColor": "#0d2b5e",
+                            "backgroundColor": "#21252b",
                         },
                         multiple=True 
                     )

@@ -1,0 +1,25 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #0d2b5e !important;
+    overflow: hidden;        /* 縦横両方のスクロールを禁止 */
+    height: 100%;
+    width: 100%;
+}
+
+/* Dashのルートdiv群 */
+#react-entry-point,
+#_dash-app-content,
+#_dash-app-content > div {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #0d2b5e;
+    height: 100%;
+    overflow: hidden;
+}

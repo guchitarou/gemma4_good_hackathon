@@ -1,15 +1,13 @@
 
-# 🔗 WowSearch — Multimodal File Relationship Analyzer powered by Gemma 4
+# 🔗 WowSearch — Find Files That Feel Related, powered by Gemma 4
 
 ---
-
 ## What It Does
-
-**WowSearch** is a tool that leverages **Google's Gemma 4** model to help you make sense of your files — both structurally and semantically.
+**WowSearch** is a tool powered by **Google's Gemma 4** model that understands your files both structurally and semantically, helping creators spark their next "Wow" idea.
 
 ### 📊 File Relationship Graph Analysis
 
-Upload a collection of files and XXX analyzes the relationships between them. Connections are visualized as an interactive **graph of nodes and edges**, making it easy to understand how your files reference, depend on, or relate to each other at a glance.
+Upload a collection of files and WowSearch analyzes their relationships, visualizing semantic connections as an interactive **graph of nodes** and edges — so you can instantly see what your files have in common.
 
 - Each **node** represents a file (document, image, audio clip, video, etc.)
 - Each **edge** represents a detected relationship between two files (e.g., shared topics, citations, complementary content)
@@ -17,7 +15,7 @@ Upload a collection of files and XXX analyzes the relationships between them. Co
 
 ### 💬 Chat-Based Multimodal Search & Recommendations
 
-Using Gemma 4's enhanced multimodal reasoning capabilities, XXX lets you search across your files and discover ideal cross-media combinations through a natural chat interface.
+Using Gemma 4's enhanced multimodal reasoning capabilities, WowSearch lets you search across your files and discover ideal cross-media combinations through a natural chat interface.
 
 Ask questions like:
 - *"Which video clip best pairs with this background music?"*
@@ -28,48 +26,19 @@ Gemma 4's ability to reason across **video, audio, text, and image** modalities 
 
 ---
 
-## Key Features
-
-| Feature | Description |
-|---|---|
-| 🗂️ Graph Visualization | Node-edge graph showing file relationships |
-| 🎥 Video × Audio Matching | Chat-based search for ideal video + audio combinations |
-| 🖼️ Text × Image Pairing | Semantic pairing of written content with visuals |
-| 🤖 Gemma 4 Reasoning | Powered by Gemma 4's enhanced multimodal reasoning |
-| 💬 Chat Interface | Conversational search for cross-modal recommendations |
-
----
-
 ## Why Gemma 4?
-
-Gemma 4 introduces significantly enhanced reasoning across multiple modalities — text, images, audio, and video — in a single model. This makes it uniquely suited for:
+Gemma 4's multimodal capabilities make it uniquely suited for this system:
 
 1. **Understanding file content semantically**, not just by filename or metadata
 2. **Reasoning across different media types** to surface non-obvious relationships
 3. **Delivering nuanced recommendations** that reflect how humans naturally combine media (e.g., a melancholic piano track paired with a time-lapse sunset video)
+4. **Running locally**, ensuring no data is sent to external servers and sensitive files can be handled without any security risks
 
 ---
 
 ## Architecture Overview
 
-```
-[User uploads files]
-        │
-        ▼
-[File Parser & Embedder]
-  (text, image, audio, video)
-        │
-        ▼
-[Gemma 4 Multimodal Reasoning Engine]
-        │
-   ┌────┴────┐
-   ▼         ▼
-[Graph Builder]   [Chat Search Interface]
-(nodes + edges)   (recommendation queries)
-   │
-   ▼
-[Interactive Graph UI]
-```
+
 
 ---
 
@@ -77,8 +46,8 @@ Gemma 4 introduces significantly enhanced reasoning across multiple modalities �
 
 ### Prerequisites
 
-- Python XXX or higher
-- XXX (e.g., GPU with CUDA support / CPU-only mode)
+- Python WowSearch or higher
+- WowSearch (e.g., GPU with CUDA support / CPU-only mode)
 - [Hugging Face account](https://huggingface.co/) with access to Gemma 4
 
 ### Installation
@@ -94,12 +63,12 @@ Gemma 4 introduces significantly enhanced reasoning across multiple modalities �
 
 ### 1. Upload Files
 
-Drag and drop your files (documents, images, audio, video) into the upload area. XXX supports the following formats:
+Drag and drop your files (documents, images, audio, video) into the upload area. WowSearch supports the following formats:
 
-- **Text / Documents:** `.txt`, `.md`, `.pdf`, `.docx` (XXX)
-- **Images:** `.jpg`, `.png`, `.webp` (XXX)
-- **Audio:** `.mp3`, `.wav` (XXX)
-- **Video:** `.mp4`, `.mov` (XXX)
+- **Text / Documents:** `.txt`, `.md`, `.pdf`, `.docx` (WowSearch)
+- **Images:** `.jpg`, `.png`, `.webp` (WowSearch)
+- **Audio:** `.mp3`, `.wav` (WowSearch)
+- **Video:** `.mp4`, `.mov` (WowSearch)
 
 ### 2. Explore the Relationship Graph
 
@@ -115,7 +84,7 @@ Switch to the **Chat** tab and ask natural language questions:
 ```
 You: Which audio file would pair best with video_001.mp4?
 Assistant: Based on the mood and pacing of video_001.mp4, audio_003.mp3 would
-           be a strong match. Both share a [XXX] tone and similar energy levels...
+           be a strong match. Both share a [WowSearch] tone and similar energy levels...
 ```
 
 ---
@@ -123,7 +92,7 @@ Assistant: Based on the mood and pacing of video_001.mp4, audio_003.mp3 would
 ## Example Scenarios
 
 ### 🎬 Content Creator
-Upload a batch of video footage, voiceover recordings, background music, and script drafts. XXX reveals which combinations are most coherent and suggests ideal pairings for your edit.
+Upload a batch of video footage, voiceover recordings, background music, and script drafts. WowSearch reveals which combinations are most coherent and suggests ideal pairings for your edit.
 
 ### 📚 Researcher
 Drop in a collection of papers, figures, and datasets. The graph shows citation-like relationships and topic clusters — helping you see the "shape" of your research at a glance.
@@ -135,8 +104,8 @@ Upload mood board images alongside copy text. Get recommendations on which image
 
 ## Limitations & Known Issues
 
-- Processing time scales with file size and count; large batches may take several minutes (XXX)
-- Audio and video analysis requires XXX VRAM / RAM (XXX)
+- Processing time scales with file size and count; large batches may take several minutes (WowSearch)
+- Audio and video analysis requires WowSearch VRAM / RAM (WowSearch)
 - Relationship detection accuracy depends on file content quality
 - Chat recommendations are suggestions, not guarantees — human judgment is still recommended
 
@@ -145,9 +114,9 @@ Upload mood board images alongside copy text. Get recommendations on which image
 ## Project Structure
 
 ```
-XXX/
-├── XXX/              # Core application code
-├── XXX/              # Tests
+WowSearch/
+├── WowSearch/              # Core application code
+├── WowSearch/              # Tests
 ├── requirements.txt
 ├── .env.example
 └── README.md
