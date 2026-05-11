@@ -44,7 +44,7 @@ def retriever_id(question: str):
     # 3. インデックスのロード
     index = indexes.Voyager(
         index_folder="./my_pylate-index",
-        index_name="jacolbert-index",
+        index_name="colbert-index",
         override=False,
     )
 
@@ -71,6 +71,8 @@ def retriever_id(question: str):
     )
 
 
+    print("ここまでOKだよ！")
+
     md_text  =  file_to_string(desc_str["path"])
 
     documents_chunks = splitter.split_text(md_text)
@@ -82,10 +84,12 @@ def retriever_id(question: str):
         show_progress_bar=True,
     )
 
+    print("ここまでOK！２")
+
     # 2. インデックスの初期化
     index = indexes.Voyager(
         index_folder="./my_pylate-index",
-        index_name="jacolbert-single-index",
+        index_name="colbert-single-index",
         override=False,
     )
 
@@ -101,8 +105,11 @@ def retriever_id(question: str):
     # 5. クエリで検索実施
     results = retriever.retrieve(
         queries_embeddings=queries_embeddings,
-        k=1
+        k=3
     )[0]
+
+
+    print(results)
 
 
     id_to_text = {str(i): chunk for i, chunk in enumerate(documents_chunks)}
@@ -112,6 +119,8 @@ def retriever_id(question: str):
     print(documents_ids)
 
     retriever_text = id_to_text.get(results[0]["id"])
+
+
 
 
     return {"result": "success", "selected_text": retriever_text}
@@ -133,7 +142,7 @@ def retriever_file(file_desc: str):
     # 3. インデックスのロード
     index = indexes.Voyager(
         index_folder="./my_pylate-index",
-        index_name="jacolbert-index",
+        index_name="colbert-index",
         override=False,
     )
 
@@ -146,6 +155,8 @@ def retriever_file(file_desc: str):
         k=3
     )[0]
 
+    print(results)
+
 
     file_list = []
     descriptions = []
@@ -153,6 +164,8 @@ def retriever_file(file_desc: str):
         retriever_id = search_id_data.get(result["id"])
 
         desc_str = description_data.get(retriever_id)
+
+        print(desc_str)
 
         file_list.append(desc_str["path"])
         descriptions.append(desc_str["description"])

@@ -6,3 +6,16 @@ my_pylate-index/jacolbert-single-index
 backup
 utils/__pycache__
 __pycache__
+
+
+
+colbert_weight/README.md
+colbert_weight/artifact.metadata
+colbert_weight/config.json
+colbert_weight/gitattributes
+colbert_weight/model.safetensors
+colbert_weight/pytorch_model.bin
+colbert_weight/special_tokens_map.json
+colbert_weight/tokenizer.json
+colbert_weight/tokenizer_config.json
+colbert_weight/vocab.txt

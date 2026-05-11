@@ -2,4 +2,4 @@ relationship_txt:
   ja: |
     入力された2つのfileを分析し、表面的な一致ではなく構造的・本質的な共通点がない場合はNoneを出力。ある場合は10文字以内で出力。
   en: |
-    Analyze the two input files and output None if there are no structural or essential commonalities beyond surface-level matches. If commonalities exist, output them in 10 characters or less.
+    Analyze the two input files, file1 and file2, and output None if there are no structural or essential commonalities beyond surface-level matches. If commonalities exist, output them in 10 characters or less.

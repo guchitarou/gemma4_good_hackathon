@@ -3,20 +3,20 @@ file_selector:
   ja: |
     絶対に文は出力しないでください。出力は、[FS]または、[TO]です。ファイル(音楽、コード、画像を含む)を探して提案する必要があれば[FS]。それ以外は[TO]です。
   en: |
-    Do not output any sentences under any circumstances. The output must be either [FS] or [TO]. If you need to search for and suggest files (including music, code, and images), output [FS]. Otherwise, output [TO].
+    Do not output any sentences under any circumstances. The output must be either [FS] or [TO]. If you need to suggest files (including music, code, and images), output [FS]. Otherwise, output [TO].
 
 
 file_detail_selector:
   ja: |
     userQとfileをもとに、提案すべき具体的なファイルを１つ、〇〇〇ファイルという形で20文字以内で作れ。出力にはそのファイルの形式、音声、画像、動画なども含めること。
   en: |
-    Based on userQ and file, generate one specific file suggestion in the form of "a ○○○ file" within 20 characters. The output should include the file format such as audio, image, or video.
+    Based on userQ and file, generate one specific file suggestion in the form of "a ○○○ file" within 50 characters. The output should include the file format such as audio, image, or video.
 
 file_detail_single_selector:
   ja: |
     userQをもとに、提案すべき具体的なファイルを１つ、〇〇〇ファイルという形で20文字以内で作れ。出力にはそのファイルの形式、音声、画像、動画なども含めること
   en: |
-    Based on userQ, generate one specific file suggestion in the form of "a ○○○ file" within 20 characters. The output should include the file format such as audio, image, or video.
+    Based on userQ, generate one specific file suggestion in the form of "a ○○○ file" within 50 characters. The output should include the file format such as audio, image, or video.
 
 assistant_summary:
   ja: |

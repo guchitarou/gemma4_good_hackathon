@@ -1,13 +1,16 @@
 import os
-
+import diskcache  # ← 追加
 import dash
-from dash import html, dcc, Input, Output, State
+from dash import html, dcc, Input, Output, State, DiskcacheManager
 from flask import send_file
+
+from cache import background_callback_manager
 
 
 app = dash.Dash(
     __name__,
     use_pages=True,
+    background_callback_manager=background_callback_manager,
     suppress_callback_exceptions=True,
 )
  
@@ -23,6 +26,12 @@ TEXT       = "#ffffff"   # 文字：白
 TEXT_SUB   = "#a0bce0"   # サブ文字：薄青白
 BORDER     = "#1e4080"   # 区切り線
  
+
+
+
+
+
+
 # ============================
 # レイアウト
 # ============================

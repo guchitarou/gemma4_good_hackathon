@@ -2,7 +2,7 @@ summary_txt:
   ja: |
     次の文章の要約文を出力せよ。
   en: |
-    Output a summary of the following text.
+    <|think|>Output a summary of the following text.
 
   
 summary_title:
@@ -16,5 +16,18 @@ summary_img:
     次の画像を解析し、概要のタイトルのみ端的に出力せよ
   en: |
     Analyze the following image and output only a concise overview title.
+
+summary_audio:
+  ja: |
+    次の音声ファイルを解析し、概要のタイトルのみ端的に出力せよ
+  en: |
+    Analyze the following audio file and output only a concise overview title.
+
+summary_video:
+  ja: |
+    次の動画ファイルを解析し、概要のタイトルのみ端的に出力せよ
+  en: |
+    Analyze the following video file and output only a concise overview title.
+
 
 

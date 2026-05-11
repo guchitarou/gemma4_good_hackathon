@@ -234,6 +234,9 @@ def get_file_type(filepath):
         return "image"
     elif ext in [".mp4", ".webm", ".mov"]:
         return "video"
+
+    elif ext in [".mp3"]:
+        return "audio"
     else:
         return "file"
 
@@ -262,7 +265,6 @@ def display_node_detail(node_data):
     )
 
     print(f"File type: {file_type}")  
-
     if file_type == "image":
 
         return html.Div([
@@ -289,6 +291,20 @@ def display_node_detail(node_data):
                     "width": "100%",
                     "maxHeight": "200px",
                     "borderRadius": "6px",
+                    "marginTop": "8px",
+                }
+            )
+        ])
+
+    elif file_type == "audio":
+        
+        return html.Div([
+            text_info,
+            html.Audio(
+                src=f"/files/{os.path.basename(node_id)}",
+                controls=True,
+                style={
+                    "width": "100%",
                     "marginTop": "8px",
                 }
             )
