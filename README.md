@@ -2,16 +2,21 @@
 # 🔗 WowSearch — Find Files That Feel Related, powered by Gemma 4
 
 ---
+
+## The Problem
+
+Your files are silent. File Explorer stores them — but never understands them.
+
+
+It can't tell you which music fits your video, or what that file even contains until you open it.
+
+
+Finding the *right* combination is slow, accidental, and exhausting.
+And the more files you have, the worse it gets.
+
+
 ## What It Does
 **WowSearch** is a tool powered by **Google's Gemma 4** model that understands your files both structurally and semantically, helping creators spark their next "Wow" idea.
-
-### 📊 File Relationship Graph Analysis
-
-Upload a collection of files and WowSearch analyzes their relationships, visualizing semantic connections as an interactive **graph of nodes** and edges — so you can instantly see what your files have in common.
-
-- Each **node** represents a file (document, image, audio clip, video, etc.)
-- Each **edge** represents a detected relationship between two files (e.g., shared topics, citations, complementary content)
-- The graph can be explored interactively to drill into specific connections
 
 ### 💬 Chat-Based Multimodal Search & Recommendations
 
@@ -23,6 +28,17 @@ Ask questions like:
 - *"What audio track fits the mood of this video?"*
 
 Gemma 4's ability to reason across **video, audio, text, and image** modalities simultaneously powers these recommendations — going far beyond simple keyword search.
+
+
+
+### 📊 File Relationship Graph Analysis
+
+Upload a collection of files and WowSearch analyzes their relationships, visualizing semantic connections as an interactive **graph of nodes** and edges — so you can instantly see what your files have in common.
+
+- Each **node** represents a file (document, image, audio clip, video, etc.)
+- Each **edge** represents a detected relationship between two files (e.g., shared topics, citations, complementary content)
+- The graph can be explored interactively to drill into specific connections
+
 
 ---
 
@@ -38,7 +54,7 @@ Gemma 4's multimodal capabilities make it uniquely suited for this system:
 
 ## Architecture Overview
 
-
+![Architecture Overview](./desc_imgs/Architecture_Overview.png)
 
 ---
 

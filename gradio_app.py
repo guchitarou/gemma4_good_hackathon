@@ -8,7 +8,7 @@ import gradio as gr
 
 
 from ollama import Client
-from utils import file_to_string, is_analyzed, MLLMAnalyzer
+from utils import is_analyzed, MLLMAnalyzer
 from config import (
     GEMMA_TYPE,
     OLLAMA_GEMMA4_APIURL,

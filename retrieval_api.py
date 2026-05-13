@@ -1,5 +1,5 @@
 import json
-import requests
+from pathlib import Path
 
 from fastapi import FastAPI
 import uvicorn
@@ -7,7 +7,6 @@ from pylate import indexes, models, retrieve
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from utils import file_to_string
-
 from config import COLBERT_MODEL_WEIGHTS_PATH, SEARCH_ID_JSON_PATH, FILE_DESCRIPTIONS_JSON_PATH
 
 # チャンクとIDの対応をJSONで保存
@@ -31,7 +30,7 @@ app = FastAPI()
 
 @app.get("/retriever_id")
 def retriever_id(question: str):
-    print("質問:", question)
+    print("Q:", question)
 
     # 2.クエリで検索用のエンベディング取得
     queries_embeddings = model.encode(
@@ -70,58 +69,55 @@ def retriever_id(question: str):
         separators=["。", "、", "\n", " ", ""],  # 日本語向け区切り
     )
 
+    extension = Path(desc_str["path"]).suffix.lstrip(".")
+    if(extension in ['pdf', 'html', 'py', 'java']):
+        md_text  =  file_to_string(desc_str["path"])
 
-    print("ここまでOKだよ！")
+        documents_chunks = splitter.split_text(md_text)
 
-    md_text  =  file_to_string(desc_str["path"])
+        documents_embeddings = model.encode(
+            documents_chunks,
+            batch_size=32,
+            is_query=False,
+            show_progress_bar=True,
+        )
 
-    documents_chunks = splitter.split_text(md_text)
+        # 2. インデックスの初期化
+        index = indexes.Voyager(
+            index_folder="./my_pylate-index",
+            index_name="colbert-single-index",
+            override=False,
+        )
 
-    documents_embeddings = model.encode(
-        documents_chunks,
-        batch_size=32,
-        is_query=False,
-        show_progress_bar=True,
-    )
+        print(index)
+        documents_ids = [str(i) for i in range(len(documents_chunks))]
 
-    print("ここまでOK！２")
+        index.add_documents(
+            documents_ids=documents_ids,
+            documents_embeddings=documents_embeddings,
+        )
+        retriever = retrieve.ColBERT(index=index)
 
-    # 2. インデックスの初期化
-    index = indexes.Voyager(
-        index_folder="./my_pylate-index",
-        index_name="colbert-single-index",
-        override=False,
-    )
-
-    print(index)
-    documents_ids = [str(i) for i in range(len(documents_chunks))]
-
-    index.add_documents(
-        documents_ids=documents_ids,
-        documents_embeddings=documents_embeddings,
-    )
-    retriever = retrieve.ColBERT(index=index)
-
-    # 5. クエリで検索実施
-    results = retriever.retrieve(
-        queries_embeddings=queries_embeddings,
-        k=3
-    )[0]
+        # 5. クエリで検索実施
+        results = retriever.retrieve(
+            queries_embeddings=queries_embeddings,
+            k=3
+        )[0]
 
 
-    print(results)
+        print(results)
 
 
-    id_to_text = {str(i): chunk for i, chunk in enumerate(documents_chunks)}
+        id_to_text = {str(i): chunk for i, chunk in enumerate(documents_chunks)}
 
 
-    print("検索結果:", results[0]["id"])
-    print(documents_ids)
+        print("検索結果:", results[0]["id"])
+        print(documents_ids)
 
-    retriever_text = id_to_text.get(results[0]["id"])
+        retriever_text = id_to_text.get(results[0]["id"])
 
-
-
+    else:
+        retriever_text = desc_str["description"]
 
     return {"result": "success", "selected_text": retriever_text}
 

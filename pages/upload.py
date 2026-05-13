@@ -9,8 +9,8 @@ import dash
 from dash import html, dcc, Input, Output, State, callback
 from ollama import Client
 
-from utils import file_to_string, ingest_with_gemma, ingest_relation, ingest_colbert
-from config import LOCAL_GEMMA4_API_URL, OLLAMA_GEMMA4_APIURL, FILE_DESCRIPTIONS_JSON_PATH, DATA_FOLDER_PATH, LANGUAGE_MODE, RELATIONSHIP_DESCRIPTIONS_JSON_PATH, COLBERT_MODEL_WEIGHTS_PATH, SEARCH_ID_JSON_PATH, GEMMA_TYPE
+from utils import ingest_with_gemma, ingest_relation, ingest_colbert
+from config import LOCAL_GEMMA4_API_URL, OLLAMA_GEMMA4_APIURL, FILE_DESCRIPTIONS_JSON_PATH, LANGUAGE_MODE, RELATIONSHIP_DESCRIPTIONS_JSON_PATH, COLBERT_MODEL_WEIGHTS_PATH, SEARCH_ID_JSON_PATH, GEMMA_TYPE
 
 
 from cache import background_callback_manager
