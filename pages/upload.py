@@ -10,7 +10,7 @@ from dash import html, dcc, Input, Output, State, callback
 from ollama import Client
 
 from utils import ingest_with_gemma, ingest_relation, ingest_colbert
-from config import LOCAL_GEMMA4_API_URL, OLLAMA_GEMMA4_APIURL, FILE_DESCRIPTIONS_JSON_PATH, LANGUAGE_MODE, RELATIONSHIP_DESCRIPTIONS_JSON_PATH, COLBERT_MODEL_WEIGHTS_PATH, SEARCH_ID_JSON_PATH, GEMMA_TYPE
+from config import LOCAL_GEMMA4_API_URL, OLLAMA_GEMMA4_APIURL, FILE_DESCRIPTIONS_JSON_PATH, LANGUAGE_MODE, RELATIONSHIP_DESCRIPTIONS_JSON_PATH, COLBERT_MODEL_WEIGHTS_PATH, SEARCH_ID_JSON_PATH, MODEL_TYPE
 
 
 from cache import background_callback_manager
@@ -186,7 +186,7 @@ def start_ingest(set_progress, n_clicks, folder_path):
             client,
             prompts,
             lg=LANGUAGE_MODE,
-            gemma_type = GEMMA_TYPE,
+            gemma_type = MODEL_TYPE,
             gemma4_api_url = LOCAL_GEMMA4_API_URL
         )
     
@@ -227,7 +227,7 @@ def start_ingest(set_progress, n_clicks, folder_path):
             result_data,
             client,
             relationship_prompts["relationship_txt"][LANGUAGE_MODE],
-            gemma_type = GEMMA_TYPE,
+            gemma_type = MODEL_TYPE,
             gemma4_api_url=LOCAL_GEMMA4_API_URL
         )
     

@@ -10,7 +10,7 @@ import gradio as gr
 from ollama import Client
 from utils import is_analyzed, MLLMAnalyzer
 from config import (
-    GEMMA_TYPE,
+    MODEL_TYPE,
     OLLAMA_GEMMA4_APIURL,
     FILE_DESCRIPTIONS_JSON_PATH,
     LANGUAGE_MODE, 
@@ -29,7 +29,7 @@ with open("./prompts/summary.yaml", "r") as f:
     summary_prompts = yaml.safe_load(f)
 
 
-if(GEMMA_TYPE=="ollama"):
+if(MODEL_TYPE=="ollama"):
     client = Client(host=OLLAMA_GEMMA4_APIURL)
 
 
@@ -38,7 +38,7 @@ mllm = MLLMAnalyzer(
     local_gemma4_api_url = LOCAL_GEMMA4_API_URL, 
     input_summary_prompts = summary_prompts, 
     input_selector_prompts = selector_prompts, 
-    mllm_type = GEMMA_TYPE,
+    mllm_type = MODEL_TYPE,
     lgm = LANGUAGE_MODE
 )
 

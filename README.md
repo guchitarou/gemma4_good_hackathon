@@ -69,10 +69,10 @@ Gemma 4's multimodal capabilities make it uniquely suited for this system:
 ### Installation
 
 
-### Set up credentials
+### Set up & Run
+[Quick Start](Env.md)
 
-
-### Run
+### 
 
 
 ## Usage
@@ -81,17 +81,12 @@ Gemma 4's multimodal capabilities make it uniquely suited for this system:
 
 Drag and drop your files (documents, images, audio, video) into the upload area. WowSearch supports the following formats:
 
-- **Text / Documents:** `.txt`, `.md`, `.pdf`, `.docx` (WowSearch)
-- **Images:** `.jpg`, `.png`, `.webp` (WowSearch)
-- **Audio:** `.mp3`, `.wav` (WowSearch)
-- **Video:** `.mp4`, `.mov` (WowSearch)
+- **Text / Documents:** `.txt`, `.md`, `.pdf`, `.py` (WowSearch)
+- **Images:** `.png`, `.webp` (WowSearch)
+- **Audio:** `.mp3` (WowSearch)
+- **Video:** `.mp4` (WowSearch)
 
-### 2. Explore the Relationship Graph
 
-Once files are processed, the graph view renders automatically. You can:
-- Click on a **node** to see file details
-- Click on an **edge** to understand why two files are connected
-- Filter by file type or relationship strength
 
 ### 3. Chat-Based Search
 
@@ -102,6 +97,14 @@ You: Which audio file would pair best with video_001.mp4?
 Assistant: Based on the mood and pacing of video_001.mp4, audio_003.mp3 would
            be a strong match. Both share a [WowSearch] tone and similar energy levels...
 ```
+
+
+### 2. Explore the Relationship Graph
+
+Once files are processed, the graph view renders automatically. You can:
+- Click on a **node** to see file details
+- Click on an **edge** to understand why two files are connected
+- Filter by file type or relationship strength
 
 ---
 

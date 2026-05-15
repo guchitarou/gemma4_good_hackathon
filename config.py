@@ -1,12 +1,12 @@
 # local or ollama
-GEMMA_TYPE = "ollama"
+MODEL_TYPE = "ollama"
 
 OLLAMA_GEMMA4_APIURL = "http://192.168.11.7:11434"
 LOCAL_GEMMA4_API_URL = "http://172.18.128.1:9999/gemma4"
 
 COLBERT_MODEL_WEIGHTS_PATH = "./colbert_weight"
 
-DATA_FOLDER_PATH = "./DataFolder/*"
+#DATA_FOLDER_PATH = "./DataFolder/*"
 
 # en or ja
 LANGUAGE_MODE = "en"

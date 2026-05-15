@@ -1,10 +1,47 @@
 import os
+import json
+
 import diskcache  # ← 追加
 import dash
 from dash import html, dcc, Input, Output, State, DiskcacheManager
 from flask import send_file
+import networkx as nx
 
 from cache import background_callback_manager
+
+from config import FILE_DESCRIPTIONS_JSON_PATH, RELATIONSHIP_DESCRIPTIONS_JSON_PATH
+
+from utils import format_size, get_mime_label, get_file_icon, get_file_type, nx_to_cyto, STYLESHEET, callbacks
+
+
+with open(RELATIONSHIP_DESCRIPTIONS_JSON_PATH, "r", encoding="utf-8") as f:
+    relationship_data = json.load(f)
+with open(FILE_DESCRIPTIONS_JSON_PATH, "r", encoding="utf-8") as f:
+    description_data = json.load(f)
+
+
+DEFAULT_ROOT = os.path.expanduser("./DataFolder")
+
+G = nx.Graph()
+desc_dict = {}
+
+for each_key in description_data.keys():
+    path = description_data[each_key]["path"]
+    filename = os.path.basename(path)
+    desc_dict[filename] = description_data[each_key]
+    G.add_node(filename, title=path)
+
+for each_data in relationship_data:
+    each_id = each_data["par_id"]
+    xid, yid = each_id.split("_")
+    relationship_desc = each_data["relationship"]
+    if relationship_desc not in ["None"]:
+        path_x = description_data[xid]["path"]
+        path_y = description_data[yid]["path"]
+        filename_x = os.path.basename(path_x)
+        filename_y = os.path.basename(path_y)
+        G.add_edge(filename_x, filename_y, relation=relationship_desc)
+
 
 
 app = dash.Dash(
@@ -13,7 +50,38 @@ app = dash.Dash(
     background_callback_manager=background_callback_manager,
     suppress_callback_exceptions=True,
 )
- 
+
+app.index_string = '''
+<!DOCTYPE html>
+<html>
+<head>
+{%metas%}
+<title>File Explorer</title>
+{%favicon%}
+{%css%}
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #181825; }
+  .tree-row:hover { background: #313244 !important; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #1e1e2e; }
+  ::-webkit-scrollbar-thumb { background: #45475a; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #585b70; }
+  .tab-btn {
+    background: transparent; border: 1px solid #313244; color: #6c7086;
+    border-radius: 8px; padding: 6px 18px; font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: all 0.15s;
+  }
+  .tab-btn:hover { background: #313244; color: #cdd6f4; }
+  .tab-active { background: #313244 !important; color: #cba6f7 !important; border-color: #cba6f7 !important; }
+</style>
+</head>
+<body>{%app_entry%}<footer>{%config%}{%scripts%}{%renderer%}</footer></body>
+</html>
+'''
+
+
+
 # ============================
 # スタイル定数
 # ============================
@@ -247,10 +315,19 @@ def close_drawer_on_navigate(_):
 
 @app.server.route("/files/<path:filepath>")
 def serve_file(filepath):
-    full_path = f"./DataFolder/{filepath}"  # 画像が置いてあるフォルダ
-    if not os.path.exists(full_path):
+    print("ここが流れた！")
+    print(filepath)
+    #full_path = f"./DataFolder/{filepath}"  # 画像が置いてあるフォルダ
+    if not os.path.exists(filepath):
         return "File not found", 404
-    return send_file(full_path)
+    return send_file(filepath)
+
+
+
+callbacks.explorer.register(app, DEFAULT_ROOT, description_data)
+callbacks.graph.register(app, desc_dict)
+callbacks.tab.register(app, G)
+
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=7862)  
+    app.run(debug=False, host="0.0.0.0", port=7862)  

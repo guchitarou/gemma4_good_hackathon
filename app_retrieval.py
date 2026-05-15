@@ -170,4 +170,4 @@ def retriever_file(file_desc: str):
     return {"result": "success", "file_paths": file_list, "descriptions": descriptions}
 
 if __name__ == "__main__":
-    uvicorn.run("retrieval_api:app", host="0.0.0.0", port=7860, reload=True)
+    uvicorn.run("app_retrieval:app", host="0.0.0.0", port=7860, reload=True)
