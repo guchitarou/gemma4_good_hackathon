@@ -3,6 +3,8 @@
 
 ---
 
+![screen img](./desc_imgs/UI0.png)
+
 ## The Problem
 
 Your files are silent. File Explorer stores them — but never understands them.
@@ -52,52 +54,46 @@ Gemma 4's multimodal capabilities make it uniquely suited for this system:
 
 ---
 
+
+
 ## Architecture Overview
 
 ![Architecture Overview](./desc_imgs/Architecture_Overview.png)
 
----
 
-## Getting Started
+## 🛠️Installation
+For environment setup and how to run the app, see the guide.
 
-### Prerequisites
-
-- Python WowSearch or higher
-- WowSearch (e.g., GPU with CUDA support / CPU-only mode)
-- [Hugging Face account](https://huggingface.co/) with access to Gemma 4
-
-### Installation
-
-
-### Set up & Run
 [Quick Start](Env.md)
 
-### 
-
+---
 
 ## Usage
 
-### 1. Upload Files
+### 1. Data Ingestion
+Place the data files you want to analyze into the `gemma4_good_hackathon/DataFolder` directory,
+then click the **Ingest** button in the app to load them. 
 
-Drag and drop your files (documents, images, audio, video) into the upload area. WowSearch supports the following formats:
+![ingest img](./desc_imgs/Ingest.gif)
 
-- **Text / Documents:** `.txt`, `.md`, `.pdf`, `.py` (WowSearch)
-- **Images:** `.png`, `.webp` (WowSearch)
-- **Audio:** `.mp3` (WowSearch)
-- **Video:** `.mp4` (WowSearch)
+WowSearch supports the following formats:
 
+- **Text / Documents:** `.txt`, `.md`, `.pdf`, `.py`
+- **Images:** `.png`
+- **Audio:** `.mp3` (max. 20s)
+- **Video:** `.mp4` (max. 60s)
 
-
-### 3. Chat-Based Search
+### 2. Chat-Based Search
 
 Switch to the **Chat** tab and ask natural language questions:
 
 ```
-You: Which audio file would pair best with video_001.mp4?
-Assistant: Based on the mood and pacing of video_001.mp4, audio_003.mp3 would
-           be a strong match. Both share a [WowSearch] tone and similar energy levels...
+You: I want to improve th~~~?
 ```
 
+```
+Assistant: ~~~
+```
 
 ### 2. Explore the Relationship Graph
 
@@ -105,6 +101,10 @@ Once files are processed, the graph view renders automatically. You can:
 - Click on a **node** to see file details
 - Click on an **edge** to understand why two files are connected
 - Filter by file type or relationship strength
+
+![graph](./desc_imgs/graph.gif)
+
+
 
 ---
 
@@ -121,6 +121,33 @@ Upload mood board images alongside copy text. Get recommendations on which image
 
 ---
 
+## Experiments and Results
+
+
+
+### Experiment 1: HTML File Input — Visual Improvement Suggestions
+
+user input : 
+```
+attached file : RPG.html
+I want to improve the visual quality of this game. Can you suggest some assets I could use?
+```
+
+Wowsearchoutput:
+```
+Better character sprite.
+```
+#### recmend file
+![caractor](./desc_imgs/caractorImage.png)
+
+
+
+
+
+
+
+
+
 ## Limitations & Known Issues
 
 - Processing time scales with file size and count; large batches may take several minutes (WowSearch)
@@ -130,24 +157,10 @@ Upload mood board images alongside copy text. Get recommendations on which image
 
 ---
 
-## Project Structure
-
-```
-WowSearch/
-├── WowSearch/              # Core application code
-├── WowSearch/              # Tests
-├── requirements.txt
-├── .env.example
-└── README.md
-```
-
----
-
 ## References
-
-- [Gemma 4](https://ai.google.dev/gemma) — Google's multimodal open model
 - [Kaggle: Gemma 4 Good Hackathon](https://www.kaggle.com/competitions/gemma-4-good-hackathon)
-
+- [Gemma 4](https://ai.google.dev/gemma) — Google's multimodal open model
+- [colbert](https://huggingface.co/colbert-ir/colbertv2.0)
 ---
 
 

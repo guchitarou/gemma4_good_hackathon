@@ -161,6 +161,7 @@ def build_file_info(path: str, description_data) -> html.Div:
     if not is_dir and st.st_size < 8192:
         mime_val, _ = mimetypes.guess_type(path)
         text_types = ["text/", "application/json", "application/javascript"]
+        print("ココマデOK")
         if mime_val and any(mime_val.startswith(t) for t in text_types):
             try:
                 with open(path, "r", encoding="utf-8", errors="replace") as f:
@@ -245,6 +246,8 @@ def build_file_info(path: str, description_data) -> html.Div:
                 }
             )
         )
+    print("ここまでOK！")
+    print(desc_html_list)
     return html.Div([
         html.Div(desc_html_list, style={"width": "50%"}),  # 幅を指定
         html.Div([
@@ -396,7 +399,7 @@ def file_explorer_layout():
                     "display": "flex",
                     "flexDirection": "column",
                     "flex": "1",
-                    "minHeight": "0",
+                    "minHeight": "400px",
                     "maxHeight": "400px",
                     "overflowY": "auto"
                     
@@ -431,7 +434,7 @@ def file_explorer_layout():
                 ],
                 style={
                     "background": "#181825",
-                    "height": "300px",
+                    "maxHeight": "300px",
                     "flexShrink": "0",
                     "display": "flex",
                     "flexDirection": "column",

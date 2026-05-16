@@ -9,38 +9,16 @@ import networkx as nx
 
 from cache import background_callback_manager
 
-from config import FILE_DESCRIPTIONS_JSON_PATH, RELATIONSHIP_DESCRIPTIONS_JSON_PATH
+from config import RELATIONSHIP_DESCRIPTIONS_JSON_PATH, FILE_DESCRIPTIONS_JSON_PATH
 
-from utils import format_size, get_mime_label, get_file_icon, get_file_type, nx_to_cyto, STYLESHEET, callbacks
+from utils import load_ana_data, format_size, get_mime_label, get_file_icon, get_file_type, nx_to_cyto, STYLESHEET, callbacks
 
 
-with open(RELATIONSHIP_DESCRIPTIONS_JSON_PATH, "r", encoding="utf-8") as f:
-    relationship_data = json.load(f)
-with open(FILE_DESCRIPTIONS_JSON_PATH, "r", encoding="utf-8") as f:
-    description_data = json.load(f)
+
 
 
 DEFAULT_ROOT = os.path.expanduser("./DataFolder")
 
-G = nx.Graph()
-desc_dict = {}
-
-for each_key in description_data.keys():
-    path = description_data[each_key]["path"]
-    filename = os.path.basename(path)
-    desc_dict[filename] = description_data[each_key]
-    G.add_node(filename, title=path)
-
-for each_data in relationship_data:
-    each_id = each_data["par_id"]
-    xid, yid = each_id.split("_")
-    relationship_desc = each_data["relationship"]
-    if relationship_desc not in ["None"]:
-        path_x = description_data[xid]["path"]
-        path_y = description_data[yid]["path"]
-        filename_x = os.path.basename(path_x)
-        filename_y = os.path.basename(path_y)
-        G.add_edge(filename_x, filename_y, relation=relationship_desc)
 
 
 
@@ -324,9 +302,9 @@ def serve_file(filepath):
 
 
 
-callbacks.explorer.register(app, DEFAULT_ROOT, description_data)
-callbacks.graph.register(app, desc_dict)
-callbacks.tab.register(app, G)
+callbacks.explorer.register(app, DEFAULT_ROOT, RELATIONSHIP_DESCRIPTIONS_JSON_PATH, FILE_DESCRIPTIONS_JSON_PATH)
+callbacks.graph.register(app, RELATIONSHIP_DESCRIPTIONS_JSON_PATH, FILE_DESCRIPTIONS_JSON_PATH)
+callbacks.tab.register(app, RELATIONSHIP_DESCRIPTIONS_JSON_PATH, FILE_DESCRIPTIONS_JSON_PATH)
 
 
 if __name__ == "__main__":

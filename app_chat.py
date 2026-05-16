@@ -72,7 +72,10 @@ def chat(message, history):
         )
 
         selected_text = response.json().get("selected_text", "No text found")
-
+        print("------------")
+        print("Rag data👇")
+        print(selected_text)
+        print("------------")
         answer_txt = mllm.rag_search(
             selected_text,
             question

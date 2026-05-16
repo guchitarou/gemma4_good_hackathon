@@ -23,6 +23,14 @@ with open(SEARCH_ID_JSON_PATH, "r", encoding="utf-8") as f:
 model = models.ColBERT(
     model_name_or_path = COLBERT_MODEL_WEIGHTS_PATH
 )
+model.eval() 
+
+all_data_index = indexes.Voyager(
+    index_folder="./my_pylate-index",
+    index_name="colbert-index",
+    override=False,
+    ef_search=200
+)
 
 app = FastAPI()
 
@@ -40,16 +48,8 @@ def retriever_id(question: str):
         show_progress_bar=True,
     )
 
-    # 3. インデックスのロード
-    index = indexes.Voyager(
-        index_folder="./my_pylate-index",
-        index_name="colbert-index",
-        override=False,
-    )
-
-    
     # 4. リトリーバーのセットアップ
-    retriever = retrieve.ColBERT(index=index)
+    retriever = retrieve.ColBERT(index=all_data_index)
 
     results = retriever.retrieve(
         queries_embeddings=queries_embeddings,
@@ -86,7 +86,8 @@ def retriever_id(question: str):
         index = indexes.Voyager(
             index_folder="./my_pylate-index",
             index_name="colbert-single-index",
-            override=False,
+            override=True,
+            ef_search=200   
         )
 
         print(index)
@@ -109,13 +110,15 @@ def retriever_id(question: str):
 
 
         id_to_text = {str(i): chunk for i, chunk in enumerate(documents_chunks)}
+        #retriever_text = id_to_text.get(results[0]["id"])
+        retriever_text =""
+        for j in range(len(results)):
+            check_text = id_to_text.get(results[j]["id"])
+            
+            retriever_text= retriever_text+check_text+"\n"
+            print(f"retrilav({j}) -> {check_text}")
 
-
-        print("検索結果:", results[0]["id"])
-        print(documents_ids)
-
-        retriever_text = id_to_text.get(results[0]["id"])
-
+        print("search results:", retriever_text)
     else:
         retriever_text = desc_str["description"]
 
@@ -125,7 +128,8 @@ def retriever_id(question: str):
 
 @app.get("/retriever_file")
 def retriever_file(file_desc: str):
-    print("質問:", file_desc)
+    print("run retriever_file")
+    print("Q:", file_desc)
 
     # 2.クエリで検索用のエンベディング取得
     queries_embeddings = model.encode(
@@ -135,16 +139,8 @@ def retriever_file(file_desc: str):
         show_progress_bar=True,
     )
 
-    # 3. インデックスのロード
-    index = indexes.Voyager(
-        index_folder="./my_pylate-index",
-        index_name="colbert-index",
-        override=False,
-    )
-
-    
     # 4. リトリーバーのセットアップ
-    retriever = retrieve.ColBERT(index=index)
+    retriever = retrieve.ColBERT(index=all_data_index)
 
     results = retriever.retrieve(
         queries_embeddings=queries_embeddings,
@@ -157,14 +153,21 @@ def retriever_file(file_desc: str):
     file_list = []
     descriptions = []
     for result in results:
-        retriever_id = search_id_data.get(result["id"])
 
-        desc_str = description_data.get(retriever_id)
+        _id = result["id"]
+        print(f"id -> {_id}")
+        retriever_id = search_id_data.get(_id)
 
-        print(desc_str)
 
-        file_list.append(desc_str["path"])
-        descriptions.append(desc_str["description"])
+        if(retriever_id is not None):        
+            print(f"retriever_id -> {retriever_id}")
+            desc_str = description_data.get(retriever_id)
+    
+            print("---<desc_str>---")
+            print(desc_str)
+            
+            file_list.append(desc_str["path"])
+            descriptions.append(desc_str["description"])
     print(file_list)
 
     return {"result": "success", "file_paths": file_list, "descriptions": descriptions}

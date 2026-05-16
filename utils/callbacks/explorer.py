@@ -4,8 +4,10 @@ import dash
 from dash import ALL, Input, Output, State, ctx, html
 
 from ..layouts import build_file_info, build_tree
+from ..analyzer import load_ana_data
 
-def register(app, root_path, description_data):
+
+def register(app, root_path, relation_path, desc_path):
     @app.callback(
         Output("root-path", "data"),
         Output("expanded-dirs", "data"),
@@ -81,6 +83,7 @@ def register(app, root_path, description_data):
         Input("selected-file", "data"),
     )
     def render_file_info(path):
+        print("renderfile!")
         if not path:
             return (
                 html.Div(
@@ -91,5 +94,10 @@ def register(app, root_path, description_data):
             )
         name = os.path.basename(path)
         header = f"{'📁' if os.path.isdir(path) else '📄'} {name}"
+
+        G, desc_dict, description_data, relationship_data = load_ana_data(
+            relation_path,
+            desc_path
+        )
         return build_file_info(path, description_data), header
 

@@ -157,10 +157,14 @@ def start_ingest(set_progress, n_clicks, folder_path):
         "whiteSpace": "pre-wrap",
     }
 
-    files_path_list = [
-        os.path.join(folder_path, f) for f in os.listdir(folder_path)
-    ]
+    files = glob.glob("./DataFolder/**/*", recursive=True)
+
+    files_path_list = [f for f in files if os.path.isfile(f)]
+
+    print(files_path_list)
+
     total = len(files_path_list)
+
     
     
     client = Client(host=OLLAMA_GEMMA4_APIURL)

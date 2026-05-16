@@ -27,7 +27,6 @@ assistant_summary:
 
 select_reason:
   ja: |
-    userQに対して、提案したファイルの概要がfile_descです。userQとfile_descをもとに、提案した理由としてそれらしいものを考え30文字以内で提案する形の回答を作成せよ
+    あなたはファイル検索アシスタントです。ユーザーの質問(userQ)に対して、提案ファイルの概要(file_desc)をもとに、そのファイルを提案する自然なアシスタントの返答を生成してください。[30文字以内の提案理由]」
   en: |
-    For userQ, the overview of the suggested file is file_desc. Based on userQ and file_desc, create an answer that proposes a plausible reason for the suggestion in 30 characters or less.
-
+    You are a file search assistant. Based on the user's question (userQ) and the proposed file description (file_desc), generate a natural assistant response recommending the file. [Reason for suggestion in 60 characters or less]"

@@ -1,7 +1,9 @@
-
+import os
 import json 
 import requests
 from pathlib import Path
+
+import networkx as nx
 
 from .read_txt_file import file_to_string
 
@@ -228,12 +230,14 @@ class MLLMAnalyzer():
             print("audio found!")
             file_desc = self.describe_audio(file_path)
         else:
-            print("unexpected file extension!")
+            print(f"unexpected file extension!->{extension}")
 
         return file_desc
 
     def ask_reasoning(self, question, desc, select_file_path):
         if(self.mllm_type=="ollama"):
+            print("プロンプトは")
+            print(self.selector_prompts['select_reason'][self.lgm])
             response = self.client.chat(
                 model='gemma4:e4b',
                 messages=[
@@ -356,6 +360,35 @@ class MLLMAnalyzer():
         print(file_description)
         return file_description
 
+
+def load_ana_data(relation_path, desc_path):
+
+    with open(relation_path, "r", encoding="utf-8") as f:
+        relationship_data = json.load(f)
+    with open(desc_path, "r", encoding="utf-8") as f:
+        description_data = json.load(f)
+
+    G = nx.Graph()
+    desc_dict = {}
+
+    for each_key in description_data.keys():
+        path = description_data[each_key]["path"]
+        filename = os.path.basename(path)
+        desc_dict[filename] = description_data[each_key]
+        G.add_node(filename, title=path)
+
+    for each_data in relationship_data:
+        each_id = each_data["par_id"]
+        xid, yid = each_id.split("_")
+        relationship_desc = each_data["relationship"]
+        if relationship_desc not in ["None"]:
+            path_x = description_data[xid]["path"]
+            path_y = description_data[yid]["path"]
+            filename_x = os.path.basename(path_x)
+            filename_y = os.path.basename(path_y)
+            G.add_edge(filename_x, filename_y, relation=relationship_desc)
+
+    return G, desc_dict, description_data, relationship_data
 
                     
 

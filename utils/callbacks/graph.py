@@ -5,8 +5,9 @@ from dash import ALL, Input, Output, State, ctx, html
 
 
 from ..graph_utils import get_file_type, nx_to_cyto
+from ..analyzer import load_ana_data
 
-def register(app, desc_dict):
+def register(app, relation_path, desc_path):
     @app.callback(
         Output("home-cytoscape", "elements"),
         Input("home-upload-data", "filename"),
@@ -53,10 +54,19 @@ def register(app, desc_dict):
         print("押された！！！！！！！！！！")
         if not node_data:
             return "Please click on a node."
+
+
+        G, desc_dict, description_data, relationship_data = load_ana_data(
+            relation_path,
+            desc_path
+        )
         node_id = node_data["id"]
         file_type = get_file_type(node_id)
         detail_info = desc_dict.get(node_id, {})
         detail = detail_info.get("description", "no details")
+
+        path = detail_info.get("path", None)
+
 
         text_info = html.P(
             f"File Name : {node_id}\n\n{detail}",
@@ -67,7 +77,7 @@ def register(app, desc_dict):
             return html.Div([
                 text_info,
                 html.Img(
-                    src=f"/files/{node_id}",
+                    src=f"/files/{path}",
                     style={"width": "100%", "maxHeight": "200px",
                            "objectFit": "contain", "borderRadius": "6px", "marginTop": "8px"},
                 ),
@@ -76,7 +86,7 @@ def register(app, desc_dict):
             return html.Div([
                 text_info,
                 html.Video(
-                    src=f"/files/{node_id}",
+                    src=f"/files/{path}",
                     controls=True,
                     style={"width": "100%", "maxHeight": "200px",
                            "borderRadius": "6px", "marginTop": "8px"},
@@ -87,7 +97,7 @@ def register(app, desc_dict):
             return html.Div([
                 text_info,
                 html.Audio(
-                    src=f"/files/{node_id}",
+                    src=f"/files/{path}",
                     controls=True,
                     style={
                         "width": "100%",

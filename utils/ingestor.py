@@ -300,7 +300,7 @@ def ingest_colbert(description_data, model_weight_path):
     index = indexes.Voyager(
         index_folder="./my_pylate-index",
         index_name="colbert-index",
-        override=False,
+        override=True,
     )
     print(index)
 
