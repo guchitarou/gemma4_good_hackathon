@@ -9,11 +9,9 @@
 
 Your files are silent. File Explorer stores them — but never understands them.
 
-
 It can't tell you which music fits your video, or what that file even contains until you open it.
 
-
-Finding the *right* combination is slow, accidental, and exhausting.
+Finding the *right* combination is time-consuming, accidental, and exhausting.
 And the more files you have, the worse it gets.
 
 
@@ -45,12 +43,18 @@ Upload a collection of files and WowSearch analyzes their relationships, visuali
 ---
 
 ## Why Gemma 4?
-Gemma 4's multimodal capabilities make it uniquely suited for this system:
 
-1. **Understanding file content semantically**, not just by filename or metadata
-2. **Reasoning across different media types** to surface non-obvious relationships
-3. **Delivering nuanced recommendations** that reflect how humans naturally combine media (e.g., a melancholic piano track paired with a time-lapse sunset video)
-4. **Running locally**, ensuring no data is sent to external servers and sensitive files can be handled without any security risks
+We chose Gemma 4 because it thinks the way creators do.
+
+Unlike conventional search, Gemma 4 reasons *across* media — recognizing 
+that a melancholic piano piece and a foggy time-lapse belong together 
+not by filename, but by feel. Its built-in thinking mode brings 
+cloud-level reasoning to your local machine, without sending a single 
+file outside your device.
+
+Privacy without sacrificing intelligence. That's why Gemma 4 doesn't 
+just power WowSearch — it makes WowSearch possible.
+
 
 ---
 
@@ -64,49 +68,110 @@ Gemma 4's multimodal capabilities make it uniquely suited for this system:
 ## 🛠️Installation
 For environment setup and how to run the app, see the guide.
 
-[Quick Start](Env.md)
+[Setup Guide](SetupGuide.md)
 
 ---
 
 ## Usage
 
-### 1. Data Ingestion
-Place the data files you want to analyze into the `gemma4_good_hackathon/DataFolder` directory,
-then click the **Ingest** button in the app to load them. 
-
-![ingest img](./desc_imgs/Ingest.gif)
+### 1. Data Ingestion (This step may take up to 30 minutes or more)
+Place the data files you want to analyze into the following directory:
+```
+gemma4_good_hackathon/DataFolder
+```
 
 WowSearch supports the following formats:
 
-- **Text / Documents:** `.txt`, `.md`, `.pdf`, `.py`
+- **Text / Documents:** `.txt`, `.md`, `.pdf`, `.py`, `.html`
 - **Images:** `.png`
-- **Audio:** `.mp3` (max. 20s)
-- **Video:** `.mp4` (max. 60s)
+- **Audio:** `.mp3` (up to 20 seconds)
+- **Video:** `.mp4` (up to 60 seconds)
+
+Then click the **Ingest** button in the app to load the files.
+
+![ingest img](./desc_imgs/Ingest.gif)
+
 
 ### 2. Chat-Based Search
 
-Switch to the **Chat** tab and ask natural language questions:
+You can ask natural language questions directly in the chat:
 
-```
-You: I want to improve th~~~?
-```
+![graph](./desc_imgs/chat.gif)
 
-```
-Assistant: ~~~
-```
-
-### 2. Explore the Relationship Graph
+### 3. Explore the Relationship Graph
 
 Once files are processed, the graph view renders automatically. You can:
 - Click on a **node** to see file details
-- Click on an **edge** to understand why two files are connected
-- Filter by file type or relationship strength
+- Each **edge** shows why two files are connected
 
 ![graph](./desc_imgs/graph.gif)
 
 
 
 ---
+
+## Experiments and Results
+### Exp 1: HTML File Input — Visual Improvement Suggestions
+
+[Input html Link](./DataFolder/codes/RPG.html)
+
+
+
+![caractor](./desc_imgs/exp0.png)
+
+
+
+### Exp 2: Image Input — Audio File Suggestions
+
+![testimage](./desc_imgs/machine_imgs.png)
+
+[Audio file Link](./DataFolder/musics/maou_bgm_orchestra20.mp3)
+
+
+![testimage](./desc_imgs/exp3.png)
+
+[Audio file Link](./DataFolder/musics/maou_bgm_acoustic27.mp3)
+
+
+![testimage](./desc_imgs/exp4.png)
+
+[Audio file Link](./DataFolder/musics/maou_bgm_cyber33.mp3)
+
+
+### Exp 3: Video Input — Audio File Suggestions
+[Input Video file Link](./DataFolder/videos/2932301-uhd_4096_2160_24fps.mp4)
+
+![testimage](./desc_imgs/exp5.png)
+
+[Audio file Link](./DataFolder/musics/maou_bgm_neorock83.mp3)
+
+
+
+### Exp 4: RAG-Based Q&A — Answering from Local Files
+
+![testimage](./desc_imgs/exp6.png)
+
+![testimage](./desc_imgs/exp7.png)
+
+
+
+### Exp 5: Knowledge Graph Construction — Visualizing File Relationships
+
+WowSearch constructs a knowledge graph from your local files, connecting files and concepts through meaningful relationships.
+
+**Full Graph Overview**
+
+![Full Knowledge Graph](./desc_imgs/overallGraph.png)
+
+**Closer Look: File Relationships(RPG.html)**
+
+![Zoomed Knowledge Graph](./desc_imgs/zoom_graph1.png)
+
+
+**Closer Look: File Relationships(cute_dog.pmg)**
+
+![Zoomed Knowledge Graph](./desc_imgs/zoom_graph2.png)
+
 
 ## Example Scenarios
 
@@ -116,52 +181,21 @@ Upload a batch of video footage, voiceover recordings, background music, and scr
 ### 📚 Researcher
 Drop in a collection of papers, figures, and datasets. The graph shows citation-like relationships and topic clusters — helping you see the "shape" of your research at a glance.
 
-### 🎨 Designer
-Upload mood board images alongside copy text. Get recommendations on which images best reflect the written tone and vice versa.
-
 ---
-
-## Experiments and Results
-
-
-
-### Experiment 1: HTML File Input — Visual Improvement Suggestions
-
-user input : 
-```
-attached file : RPG.html
-I want to improve the visual quality of this game. Can you suggest some assets I could use?
-```
-
-Wowsearchoutput:
-```
-Better character sprite.
-```
-#### recmend file
-![caractor](./desc_imgs/caractorImage.png)
-
-
-
-
-
-
-
 
 
 ## Limitations & Known Issues
-
-- Processing time scales with file size and count; large batches may take several minutes (WowSearch)
-- Audio and video analysis requires WowSearch VRAM / RAM (WowSearch)
-- Relationship detection accuracy depends on file content quality
-- Chat recommendations are suggestions, not guarantees — human judgment is still recommended
-
+- Preprocessing time increases as the number of files grows. This is because the system performs an exhaustive pairwise comparison of all file combinations in order to build the knowledge graph.
+- Audio and video file length is limited (Gemma4 only supports files of around a few tens of seconds)
+- Chat-based search response time is not yet fast enough and remains an area for further optimization.
 ---
 
 ## References
 - [Kaggle: Gemma 4 Good Hackathon](https://www.kaggle.com/competitions/gemma-4-good-hackathon)
 - [Gemma 4](https://ai.google.dev/gemma) — Google's multimodal open model
-- [colbert](https://huggingface.co/colbert-ir/colbertv2.0)
+- [colbert](https://huggingface.co/colbert-ir/colbertv2.0) — A retrieval model for efficient and accurate passage search
+- [maoudamashii](https://maou.audio/) — Royalty-free audio source used for testing
+- [Pexels](https://www.pexels.com/ja-jp/video/2932301/) — Royalty-free video materials used for testing
 ---
-
 
 *Built for the Gemma 4 Good Hackathon.*

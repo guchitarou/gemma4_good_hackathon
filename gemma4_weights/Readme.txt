@@ -1,0 +1,1 @@
+Place the Gemma 4 E4B-IT model weights in this folder.
