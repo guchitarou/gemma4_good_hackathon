@@ -14,6 +14,6 @@ for filename in os.listdir(input_folder):
         audio = AudioSegment.from_mp3(input_path)
         trimmed = audio[:25 * 1000]
         trimmed.export(output_path, format="mp3")
-        print(f"処理完了: {filename}")
+        print(f"done: {filename}")
 
-print("全ファイル処理完了")
+print("finish!")
