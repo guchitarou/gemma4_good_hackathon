@@ -1,57 +1,87 @@
 {
-    "id5": {
-        "data_type": "txt",
-        "description": "安全性を軸としたAI導入の総合パートナーとしてのAnthropicとClaude Mythosの技術的進化",
-        "path": "./DataFolder/Anthropic.pdf"
-    },
-    "id6": {
+    "id0": {
         "data_type": "image",
         "description": "Pixel Art Character Portrait",
         "path": "./DataFolder/caractorImage.png"
     },
+    "id1": {
+        "data_type": "image",
+        "description": "Fluffy White Pomeranian on a Towel",
+        "path": "./DataFolder/cute_dog.png"
+    },
+    "id2": {
+        "data_type": "txt",
+        "description": "Federation of Eldora Islands: Digitized Maritime Nation Merging Natural Environment with Sustainable Economy",
+        "path": "./DataFolder/EldoraIslands .pdf"
+    },
+    "id3": {
+        "data_type": "txt",
+        "description": "Anthropic's Evolution in 2026: AI Governance and Claude Mythos Frontier Model",
+        "path": "./DataFolder/OverallTrendsOfAnthropicIn2026.pdf"
+    },
+    "id4": {
+        "data_type": "code",
+        "description": "Simple Tetris game implementation using HTML Canvas",
+        "path": "./DataFolder/tetoris.html"
+    },
+    "id5": {
+        "data_type": "code",
+        "description": "Generative Adversarial Network for Synthetic Multimodal Data Generation",
+        "path": "./DataFolder/codes/GANPrototype.py"
+    },
+    "id6": {
+        "data_type": "code",
+        "description": "Simple Village RPG: Top-Down 2D Game Environment",
+        "path": "./DataFolder/codes/RPG.html"
+    },
     "id7": {
         "data_type": "image",
-        "description": "Blush Rose on Rustic Wood and Linen",
-        "path": "./DataFolder/couleur-rose-2378156.jpg"
+        "description": "Pink Rose on Weathered Wood and Linen",
+        "path": "./DataFolder/images/couleur-rose-2378156.jpg"
     },
     "id8": {
-        "data_type": "txt",
-        "description": "エルドラ・諸島連合の「ブルーエコノミー」と「分散型民主主義」に基づく社会構造、課題、および今後の展望",
-        "path": "./DataFolder/Federation_of_Eldora_Islands.pdf"
+        "data_type": "audio",
+        "description": "A retro, electronic, and slightly melancholic synth-pop track. It feels like a late-night drive through a neon-lit city.",
+        "path": "./DataFolder/musics/maou_bgm_8bit29.mp3"
     },
     "id9": {
-        "data_type": "txt",
-        "description": "ハマタマナの生態的特徴から見る多角的な利用価値の分析",
-        "path": "./DataFolder/flower_report.pdf"
+        "data_type": "audio",
+        "description": "A nostalgic, slightly melancholic, and upbeat indie-pop track. It feels like a late-night drive with friends.",
+        "path": "./DataFolder/musics/maou_bgm_acoustic27.mp3"
     },
     "id10": {
-        "data_type": "code",
-        "description": "Code Review and Analysis of Deep Learning GAN Workflow for Improved Stability and Reproducibility",
-        "path": "./DataFolder/GANPrototype.py"
+        "data_type": "audio",
+        "description": "A slow, rhythmic, and slightly melancholic beat. It feels like a late-night drive or a quiet, reflective moment.",
+        "path": "./DataFolder/musics/maou_bgm_cyber33.mp3"
     },
     "id11": {
-        "data_type": "image",
-        "description": "Vibrant Red Rose Against Black Background",
-        "path": "./DataFolder/josch13-rose-320868.jpg"
+        "data_type": "audio",
+        "description": "A melancholic, atmospheric soundscape. It evokes a sense of quiet, introspective sadness, like a rainy evening.",
+        "path": "./DataFolder/musics/maou_bgm_ethnic33.mp3"
+    },
+    "id12": {
+        "data_type": "audio",
+        "description": "A driving, energetic electronic beat. It feels like a high-energy dance track, perfect for a club or workout.",
+        "path": "./DataFolder/musics/maou_bgm_neorock83.mp3"
+    },
+    "id13": {
+        "data_type": "audio",
+        "description": "A low, rumbling, distorted bass sound. It feels heavy, dark, and industrial, like a massive machine starting up.",
+        "path": "./DataFolder/musics/maou_bgm_orchestra20.mp3"
+    },
+    "id14": {
+        "data_type": "audio",
+        "description": "A whimsical, slightly eerie, and playful tune. It sounds like a quirky, animated cartoon theme song.",
+        "path": "./DataFolder/musics/maou_bgm_piano41.mp3"
     },
     "id15": {
-        "data_type": "image",
-        "description": "Vibrant Blue Flowers Against Neutral Background",
-        "path": "./DataFolder/pezibear-liverflower-1393813.jpg"
+        "data_type": "video",
+        "description": "Youth Soccer Practice Session",
+        "path": "./DataFolder/videos/2932301-uhd_4096_2160_24fps.mp4"
     },
     "id16": {
-        "data_type": "txt",
-        "description": "霧降る森の「琥珀包み」：土地の恵みと文化が織りなす深みのある祝祭パイ",
-        "path": "./DataFolder/pie_recipe.pdf"
-    },
-    "id17": {
-        "data_type": "code",
-        "description": "キーボード入力に基づくシンプル村のRPG対話シミュレーション",
-        "path": "./DataFolder/RPG.html"
-    },
-    "id18": {
-        "data_type": "code",
-        "description": "テトリスゲームの実装：Canvas APIによる物理シミュレーション、ゲームロジック、衝突判定、およびライン消去",
-        "path": "./DataFolder/tetoris.html"
+        "data_type": "video",
+        "description": "Fluffy White Pomeranian on a Towel",
+        "path": "./DataFolder/videos/minidog.mp4"
     }
 }

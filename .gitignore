@@ -1,7 +1,5 @@
 DataFolder
 
-my_pylate-index/jacolbert-index
-my_pylate-index/jacolbert-single-index
 
 backup
 utils/__pycache__
@@ -19,3 +17,7 @@ colbert_weight/special_tokens_map.json
 colbert_weight/tokenizer.json
 colbert_weight/tokenizer_config.json
 colbert_weight/vocab.txt
+
+
+file_ana_results/
+my_pylate-index/

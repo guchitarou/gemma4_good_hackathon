@@ -1,7 +1,287 @@
 [
     {
-        "par_id": "id5_id6",
+        "par_id": "id0_id1",
+        "relationship": "Portrait"
+    },
+    {
+        "par_id": "id0_id2",
         "relationship": "None"
+    },
+    {
+        "par_id": "id0_id3",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id0_id4",
+        "relationship": "Graphics"
+    },
+    {
+        "par_id": "id0_id5",
+        "relationship": "Create"
+    },
+    {
+        "par_id": "id0_id6",
+        "relationship": "Pixel Art"
+    },
+    {
+        "par_id": "id0_id7",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id0_id8",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id0_id9",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id0_id10",
+        "relationship": "Digital"
+    },
+    {
+        "par_id": "id0_id11",
+        "relationship": "Digital"
+    },
+    {
+        "par_id": "id0_id12",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id0_id13",
+        "relationship": "Digital"
+    },
+    {
+        "par_id": "id0_id14",
+        "relationship": "Digital"
+    },
+    {
+        "par_id": "id0_id15",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id0_id16",
+        "relationship": "Portrait"
+    },
+    {
+        "par_id": "id1_id2",
+        "relationship": "Nature"
+    },
+    {
+        "par_id": "id1_id3",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id1_id4",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id1_id5",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id1_id6",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id1_id7",
+        "relationship": "Textiles"
+    },
+    {
+        "par_id": "id1_id8",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id1_id9",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id1_id10",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id1_id11",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id1_id12",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id1_id13",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id1_id14",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id1_id15",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id1_id16",
+        "relationship": "Identical"
+    },
+    {
+        "par_id": "id2_id3",
+        "relationship": "Evolution"
+    },
+    {
+        "par_id": "id2_id4",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id2_id5",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id2_id6",
+        "relationship": "World"
+    },
+    {
+        "par_id": "id2_id7",
+        "relationship": "Nature"
+    },
+    {
+        "par_id": "id2_id8",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id2_id9",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id2_id10",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id2_id11",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id2_id12",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id2_id13",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id2_id14",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id2_id15",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id2_id16",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id3_id4",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id3_id5",
+        "relationship": "AI Models"
+    },
+    {
+        "par_id": "id3_id6",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id3_id7",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id3_id8",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id3_id9",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id3_id10",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id3_id11",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id3_id12",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id3_id13",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id3_id14",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id3_id15",
+        "relationship": "Dev"
+    },
+    {
+        "par_id": "id3_id16",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id4_id5",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id4_id6",
+        "relationship": "2D Game"
+    },
+    {
+        "par_id": "id4_id7",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id4_id8",
+        "relationship": "Rhythm"
+    },
+    {
+        "par_id": "id4_id9",
+        "relationship": "Pattern"
+    },
+    {
+        "par_id": "id4_id10",
+        "relationship": "Rhythm"
+    },
+    {
+        "par_id": "id4_id11",
+        "relationship": "Rhythm"
+    },
+    {
+        "par_id": "id4_id12",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id4_id13",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id4_id14",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id4_id15",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id4_id16",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id5_id6",
+        "relationship": "System"
     },
     {
         "par_id": "id5_id7",
@@ -9,19 +289,31 @@
     },
     {
         "par_id": "id5_id8",
-        "relationship": "構造分析"
+        "relationship": "None"
     },
     {
         "par_id": "id5_id9",
-        "relationship": "分析"
+        "relationship": "None"
     },
     {
         "par_id": "id5_id10",
-        "relationship": "AI"
+        "relationship": "Synth"
     },
     {
         "par_id": "id5_id11",
-        "relationship": "None"
+        "relationship": "Synth"
+    },
+    {
+        "par_id": "id5_id12",
+        "relationship": "Synthesis"
+    },
+    {
+        "par_id": "id5_id13",
+        "relationship": "Synthesis"
+    },
+    {
+        "par_id": "id5_id14",
+        "relationship": "Synthesis"
     },
     {
         "par_id": "id5_id15",
@@ -29,19 +321,11 @@
     },
     {
         "par_id": "id5_id16",
-        "relationship": "記述 (Description)"
-    },
-    {
-        "par_id": "id5_id17",
-        "relationship": "シミュレーション"
-    },
-    {
-        "par_id": "id5_id18",
-        "relationship": "技術的"
+        "relationship": "None"
     },
     {
         "par_id": "id6_id7",
-        "relationship": "Imagery"
+        "relationship": "None"
     },
     {
         "par_id": "id6_id8",
@@ -60,24 +344,28 @@
         "relationship": "None"
     },
     {
+        "par_id": "id6_id12",
+        "relationship": "Media"
+    },
+    {
+        "par_id": "id6_id13",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id6_id14",
+        "relationship": "None"
+    },
+    {
         "par_id": "id6_id15",
         "relationship": "None"
     },
     {
         "par_id": "id6_id16",
-        "relationship": "Creation"
-    },
-    {
-        "par_id": "id6_id17",
-        "relationship": "Gaming"
-    },
-    {
-        "par_id": "id6_id18",
-        "relationship": "Grid"
+        "relationship": "None"
     },
     {
         "par_id": "id7_id8",
-        "relationship": "None"
+        "relationship": "Mood"
     },
     {
         "par_id": "id7_id9",
@@ -89,35 +377,51 @@
     },
     {
         "par_id": "id7_id11",
-        "relationship": "Rose"
+        "relationship": "None"
+    },
+    {
+        "par_id": "id7_id12",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id7_id13",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id7_id14",
+        "relationship": "None"
     },
     {
         "par_id": "id7_id15",
-        "relationship": "Flowers"
+        "relationship": "None"
     },
     {
         "par_id": "id7_id16",
-        "relationship": "Vibe/Scene"
-    },
-    {
-        "par_id": "id7_id17",
-        "relationship": "None"
-    },
-    {
-        "par_id": "id7_id18",
-        "relationship": "None"
+        "relationship": "Surface"
     },
     {
         "par_id": "id8_id9",
-        "relationship": "生態的特徴"
+        "relationship": "Electronic"
     },
     {
         "par_id": "id8_id10",
-        "relationship": "System"
+        "relationship": "Electronic"
     },
     {
         "par_id": "id8_id11",
-        "relationship": "None"
+        "relationship": "Electronic"
+    },
+    {
+        "par_id": "id8_id12",
+        "relationship": "Synth Beat"
+    },
+    {
+        "par_id": "id8_id13",
+        "relationship": "Synth"
+    },
+    {
+        "par_id": "id8_id14",
+        "relationship": "Synth"
     },
     {
         "par_id": "id8_id15",
@@ -125,98 +429,118 @@
     },
     {
         "par_id": "id8_id16",
-        "relationship": "地域"
-    },
-    {
-        "par_id": "id8_id17",
-        "relationship": "構造"
-    },
-    {
-        "par_id": "id8_id18",
         "relationship": "None"
     },
     {
         "par_id": "id9_id10",
-        "relationship": "Analysis"
+        "relationship": "Electronic"
     },
     {
         "par_id": "id9_id11",
-        "relationship": "None"
+        "relationship": "Electronic"
+    },
+    {
+        "par_id": "id9_id12",
+        "relationship": "Electronic"
+    },
+    {
+        "par_id": "id9_id13",
+        "relationship": "Electronic"
+    },
+    {
+        "par_id": "id9_id14",
+        "relationship": "Electronic"
     },
     {
         "par_id": "id9_id15",
-        "relationship": "None"
+        "relationship": "Energy"
     },
     {
         "par_id": "id9_id16",
-        "relationship": "自然の恵み"
-    },
-    {
-        "par_id": "id9_id17",
         "relationship": "None"
-    },
-    {
-        "par_id": "id9_id18",
-        "relationship": "シミュレーション"
     },
     {
         "par_id": "id10_id11",
-        "relationship": "None"
+        "relationship": "Electronic"
+    },
+    {
+        "par_id": "id10_id12",
+        "relationship": "Electronic"
+    },
+    {
+        "par_id": "id10_id13",
+        "relationship": "Upbeat"
+    },
+    {
+        "par_id": "id10_id14",
+        "relationship": "Upbeat"
     },
     {
         "par_id": "id10_id15",
-        "relationship": "None"
+        "relationship": "Energy"
     },
     {
         "par_id": "id10_id16",
         "relationship": "None"
     },
     {
-        "par_id": "id10_id17",
-        "relationship": "System"
+        "par_id": "id11_id12",
+        "relationship": "Electronic"
     },
     {
-        "par_id": "id10_id18",
-        "relationship": "Algorithm"
+        "par_id": "id11_id13",
+        "relationship": "Upbeat"
+    },
+    {
+        "par_id": "id11_id14",
+        "relationship": "Upbeat"
     },
     {
         "par_id": "id11_id15",
-        "relationship": "Flowers"
+        "relationship": "Energy"
     },
     {
         "par_id": "id11_id16",
-        "relationship": "Detail"
-    },
-    {
-        "par_id": "id11_id17",
         "relationship": "None"
     },
     {
-        "par_id": "id11_id18",
+        "par_id": "id12_id13",
+        "relationship": "Electronic"
+    },
+    {
+        "par_id": "id12_id14",
+        "relationship": "Electronic"
+    },
+    {
+        "par_id": "id12_id15",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id12_id16",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id13_id14",
+        "relationship": "Electronic"
+    },
+    {
+        "par_id": "id13_id15",
+        "relationship": "Energy"
+    },
+    {
+        "par_id": "id13_id16",
+        "relationship": "None"
+    },
+    {
+        "par_id": "id14_id15",
+        "relationship": "Energy"
+    },
+    {
+        "par_id": "id14_id16",
         "relationship": "None"
     },
     {
         "par_id": "id15_id16",
-        "relationship": "Nature"
-    },
-    {
-        "par_id": "id15_id17",
         "relationship": "None"
-    },
-    {
-        "par_id": "id15_id18",
-        "relationship": "None"
-    },
-    {
-        "par_id": "id16_id17",
-        "relationship": "物語"
-    },
-    {
-        "par_id": "id16_id18",
-        "relationship": "構造"
-    },
-    {
-        "par_id": "id17_id18",
-        "relationship": "シミュレーション"
     }
 ]
