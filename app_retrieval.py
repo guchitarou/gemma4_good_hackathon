@@ -152,6 +152,7 @@ def retriever_file(file_desc: str):
 
     file_list = []
     descriptions = []
+    data_types = []
     for result in results:
 
         _id = result["id"]
@@ -168,9 +169,10 @@ def retriever_file(file_desc: str):
             
             file_list.append(desc_str["path"])
             descriptions.append(desc_str["description"])
+            data_types.append(desc_str["data_type"])
     print(file_list)
 
-    return {"result": "success", "file_paths": file_list, "descriptions": descriptions}
+    return {"result": "success", "file_paths": file_list, "descriptions": descriptions, "data_types":data_types}
 
 if __name__ == "__main__":
     uvicorn.run("app_retrieval:app", host="0.0.0.0", port=7860, reload=True)

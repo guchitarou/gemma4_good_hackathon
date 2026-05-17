@@ -113,7 +113,7 @@ class MLLMAnalyzer():
                 {
                     "role": "user",
                     "content": [
-                        {"type": "image", "image": input_file_path},
+                        {"type": "image", "image": str(input_file_path)},
                     ],
                 },
             ]
@@ -128,6 +128,11 @@ class MLLMAnalyzer():
         return file_desc
 
     def describe_video(self, input_file_path):
+
+
+        print(type(input_file_path))
+
+        print("-------------------------------")
         if(self.mllm_type=="local"):
             messages_list = [
                 {
@@ -137,7 +142,7 @@ class MLLMAnalyzer():
                 {
                     "role": "user",
                     "content": [
-                        {"type": "video", "video": input_file_path},
+                        {"type": "video", "video": str(input_file_path)},
                     ],
                 },
             ]
@@ -272,6 +277,73 @@ class MLLMAnalyzer():
                 {"role": "assistant", "content": file_reason},
                 {"role": "assistant", "content": {"path": select_file_path}}
             ]
+        
+        return ans
+
+    def check_file(self, desc):
+        if(self.mllm_type=="ollama"):
+            print("プロンプトは")
+            print(self.selector_prompts['file_check'][self.lgm])
+            response = self.client.chat(
+                model='gemma4:e4b',
+                messages=[
+                    {"role": "system", "content": self.selector_prompts['file_identity_checker'][self.lgm]},
+                    {'role': 'user', 'content': f"desc : {desc}"},
+                ],
+            )
+            ans = response.message.content
+
+        else:
+            messages_list = [
+                {
+                    "role": "system",
+                    "content": [{"type": "text", "text":  self.selector_prompts['file_identity_checker'][self.lgm]}],
+                },
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "text", "text": f"desc : {desc}"},
+                    ],
+                },
+            ]
+            response = requests.post(
+                self.local_gemma4_api_url,
+                json = messages_list
+            )
+            ans = response.json()
+        
+        return ans
+
+
+    def select_file(self, desc, w_desc):
+        if(self.mllm_type=="ollama"):
+            response = self.client.chat(
+                model='gemma4:e4b',
+                messages=[
+                    {"role": "system", "content": f"{self.selector_prompts['file_select'][self.lgm]}{w_desc}"},
+                    {'role': 'user', 'content': desc},
+                ],
+            )
+            ans = response.message.content
+
+        else:
+            messages_list = [
+                {
+                    "role": "system",
+                    "content": [{"type": "text", "text": f"{self.selector_prompts['file_select'][self.lgm]}{w_desc}" }],
+                },
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "text", "text": desc},
+                    ],
+                },
+            ]
+            response = requests.post(
+                self.local_gemma4_api_url,
+                json = messages_list
+            )
+            ans = response.json()
         
         return ans
 

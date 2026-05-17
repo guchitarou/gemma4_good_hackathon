@@ -18,8 +18,17 @@ from config import (
     RETRIEVER_API_URL
 )
 
+
+def filter_by_type(data: dict, data_type: str) -> dict:
+    return {k: v for k, v in data.items() if v["data_type"] == data_type}
+
+def to_description_text(data: dict) -> str:
+    return "\n".join(f'{k}:"{v["description"]}"' for k, v in data.items())
+
+
 with open(FILE_DESCRIPTIONS_JSON_PATH, "r", encoding="utf-8") as f:
     description_data = json.load(f)
+
 
 
 with open("./prompts/file_selector.yaml", "r") as f:
@@ -28,7 +37,7 @@ with open("./prompts/file_selector.yaml", "r") as f:
 with open("./prompts/summary.yaml", "r") as f:
     summary_prompts = yaml.safe_load(f)
 
-
+client = None
 if(MODEL_TYPE=="ollama"):
     client = Client(host=OLLAMA_GEMMA4_APIURL)
 
@@ -97,18 +106,40 @@ def chat(message, history):
 
         file_path_list = response.json().get("file_paths", [])
         descriptions = response.json().get("descriptions", [])
+        data_types = response.json().get("data_types", [])
+        
+        print(f"ideal_file_description ->{ideal_file_description}")
+        check_type = mllm.check_file(
+            ideal_file_description
+        )
 
-        for file_path, desc in zip(file_path_list, descriptions):
-            print(f"Retrieved file path: {file_path}, description: {desc}")
-            res_file_name = Path(file_path).name
+        print(f"check_type -> {check_type}")
 
+        select_disc_datas = filter_by_type(
+            description_data,
+            check_type
+        )
+
+        candi_datas = to_description_text(select_disc_datas)
+
+        print("candi_datas")
+        print(candi_datas)
+        selected_id = mllm.select_file(
+            candi_datas,
+            ideal_file_description
+        )
+        selected_data = select_disc_datas.get(selected_id, None)
+        
+        if(selected_data is not None):
+            desc = selected_data["description"]
+            file_path = selected_data["path"]
             ans=mllm.ask_reasoning(
                 question,
                 desc,
                 file_path
             )
-
             return ans
+                
         return [
             {"role": "assistant", "content": "No matching files were found."}
         ]

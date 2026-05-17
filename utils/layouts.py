@@ -30,9 +30,9 @@ STYLESHEET = [
         "background-color": "#3B8BD4",
         "color": "#fff",
         "font-size": "12px",
-        "text-valign": "center",
-        "text-halign": "center",
-        "width": 80, "height": 80,
+        "text-valign": "top",
+        "text-halign": "top",
+        "width": 40, "height": 40,
         "border-width": 2,
         "border-color": "#185FA5",
     }},
@@ -46,11 +46,11 @@ STYLESHEET = [
         "cursor": "pointer",
     }},
     {"selector": "edge", "style": {
-        "label": "",
+        "label": "data(label)",
+        "line-color": "lightgray",
+        "color": "lightgray",
+        "font-size": "8px",
         "curve-style": "bezier",
-        "line-color": "#888",
-        "font-size": "10px",
-        "width": 1,
     }},
     {"selector": "edge:hover", "style": {
         "line-color": "#D85A30",
@@ -328,34 +328,6 @@ def screen_graph_layout(graph):
                     ),
                 ], style={"width": "65%"}),
 
-                html.Div([
-                    html.H4("Drop Files Here", style={"marginTop": 0, "color": "#cce0ff"}),
-                    dcc.Upload(
-                        id="home-upload-data",
-                        children=html.Div([
-                            "📂 Drag and Drop"
-                        ], style={
-                            "height": "14rem",
-                            "display": "flex",
-                            "alignItems": "center",
-                            "justifyContent": "center",
-                        }),
-                        style={
-                            "width": "calc(100% - 40px)",
-                            "margin": "8px 20px",
-                            "padding": "16px",
-                            "borderWidth": "2px",
-                            "borderStyle": "dashed",
-                            "borderColor": "#3B8BD4",
-                            "borderRadius": "8px",
-                            "textAlign": "center",
-                            "color": "#cce0ff",
-                            "height": "15rem",
-                            "backgroundColor": BG,
-                        },
-                        multiple=True,
-                    ),
-                ], style={"width": "30%"}),
             ], style={
                 "width": "100%", "padding": "16px",
                 "borderRadius": "8px", "marginLeft": "8px",

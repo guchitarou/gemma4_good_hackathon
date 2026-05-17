@@ -30,3 +30,24 @@ select_reason:
     あなたはファイル検索アシスタントです。ユーザーの質問(userQ)に対して、提案ファイルの概要(file_desc)をもとに、そのファイルを提案する自然なアシスタントの返答を生成してください。[30文字以内の提案理由]」
   en: |
     You are a file search assistant. Based on the user's question (userQ) and the proposed file description (file_desc), generate a natural assistant response recommending the file. [Reason for suggestion in 60 characters or less]"
+
+file_check:
+  ja: |
+    あなたはファイル検索アシスタントです。ユーザーの質問(userQ)に対して、提案ファイルの概要(file_desc)をもとに、そのファイルを提案する自然なアシスタントの返答を生成してください。[30文字以内の提案理由]」
+  en: |
+    You are a file search assistant. Based on the user's question (userQ) and the proposed file description (file_desc), generate a natural assistant response recommending the file. [Reason for suggestion in 60 characters or less]"
+
+file_identity_checker:
+  ja: |
+    2つの文章が同じ拡張子のファイルの説明であることが別れはyes、違う拡張子のファイルであることが分かればnoを出力。
+  en: |
+    Predict the file extension of the file described in the following sentence. The output will be one of the following: [txt, audio, code, image, video].
+
+file_select:
+  ja: |
+    以下のファイルの説明の中から、次の説明に最も近いもののIDを出力してください。
+
+  en: |
+    Among the following file descriptions, output the ID of the one that most closely matches the description of .
+
+

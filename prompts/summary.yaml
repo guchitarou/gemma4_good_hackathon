@@ -20,14 +20,15 @@ summary_img:
 summary_audio:
   ja: |
     次の音声ファイルを解析し、概要のタイトルのみ端的に出力せよ
-  en: |
-    Analyze the following audio file and output only a concise overview title.
+  en: |    
+    Rules:
+    - describe what comes to mind when you hear the sound.
+    
+    Output only 20 words or less.
 
 summary_video:
   ja: |
     次の動画ファイルを解析し、概要のタイトルのみ端的に出力せよ
   en: |
     Analyze the following video file and output only a concise overview title.
-
-
 
