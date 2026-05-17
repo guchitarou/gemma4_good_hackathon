@@ -17,8 +17,5 @@ colbert_weight/tokenizer.json
 colbert_weight/tokenizer_config.json
 colbert_weight/vocab.txt
 
-
-my_pylate-index/colbert-index
-my_pylate-index/colbert-single-index
 my_pylate-index/jacolbert-index
 my_pylate-index/jacolbert-single-index

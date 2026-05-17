@@ -42,6 +42,7 @@ layout = html.Div([
                     type="text",
                     placeholder="Enter folder path (e.g. /data/my_folder)",
                     value="./DataFolder",  # ← デフォルト値
+                    disabled=True,
                     style={
                         "width": "100%",
                         "height": "3rem",          # ← Input自体に指定
@@ -170,12 +171,11 @@ def start_ingest(set_progress, n_clicks, folder_path):
     client = Client(host=OLLAMA_GEMMA4_APIURL)
     
     for idx, file_path in enumerate(files_path_list):
-        # 進捗を更新
         progress_pct = int((idx + 1) / total * 50)
         set_progress([
              {
                 "height": "8px",
-                "width": f"{progress_pct}%",   # ← widthで進捗表現
+                "width": f"{progress_pct}%", 
                 "background": "#3B8BD4",
                 "borderRadius": "4px",
                 "transition": "width 0.3s",

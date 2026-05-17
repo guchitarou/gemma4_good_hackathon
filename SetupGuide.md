@@ -35,6 +35,11 @@ Open `config.py` and set the following to disable Ollama mode:
 MODEL_TYPE = "local"
 ```
 
+Then set your machine's local IP address:
+
+```python
+LOCAL_GEMMA4_API_URL = "http://172.18.128.1:9999/gemma4"
+```
 
 **Launch Gemma 4 API:**
 ```bash

@@ -1,0 +1,1 @@
+This folder stores the ColBERT weights in this folder.
