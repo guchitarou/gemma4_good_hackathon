@@ -463,4 +463,106 @@ def load_ana_data(relation_path, desc_path):
     return G, desc_dict, description_data, relationship_data
 
                     
+import json
+from concurrent.futures import ThreadPoolExecutor
+from openai import OpenAI
 
+
+import json
+from concurrent.futures import ThreadPoolExecutor
+from openai import OpenAI
+
+
+class GroupClassifier:
+    def __init__(self, groups: list[dict], system_prompt: str,
+                 model: str = "",
+                 base_url: str = "http://localhost:8000/v1",
+                 chunk: int = 20):
+        self.groups = groups  # [{"id": ..., "text": ...}, ...]
+        self.system_prompt = system_prompt
+        self.model = model
+        self.chunk = chunk
+        self.client = OpenAI(base_url=base_url, api_key="EMPTY")
+
+    def pick(self, item: str, idx: list[int]) -> int | None:
+        names = [f"G{j+1}" for j in range(len(idx))] + ["該当なし"]
+        # 変更:論点の文章は "text" から取り出す
+        group_text = "\n".join(f"{names[j]}: {self.groups[i]['text']}" for j, i in enumerate(idx))
+        print("Debug: group_text = \n" + group_text)
+        schema = {
+            "type": "object",
+            "properties": {"group": {"type": "string", "enum": names}},
+            "required": ["group"],
+        }
+        res = self.client.chat.completions.create(
+            model=self.model,
+            messages=[
+                {"role": "system", "content": self.system_prompt},
+                {"role": "user", "content": f"# グループ一覧\n{group_text}\n\n# 論点\n{item}"},
+            ],
+            response_format={"type": "json_schema",
+                             "json_schema": {"name": "pick", "schema": schema}},
+            temperature=0,
+        )
+        g = json.loads(res.choices[0].message.content)["group"]
+        if g not in names:
+            raise ValueError(f"想定外の出力: {g}")
+        return None if g == "該当なし" else idx[names.index(g)]
+
+    def classify(self, item: str) -> dict:
+        """戻り値: {"id": グループID, "text": グループの論点}。該当なしはidがNone"""
+        not_found = {"id": None, "text": "該当なし"}  # 変更:該当なし用の結果
+        idx = list(range(len(self.groups)))
+        while len(idx) > self.chunk:
+            blocks = [idx[i:i + self.chunk] for i in range(0, len(idx), self.chunk)]
+
+            raise Exception(blocks)
+            with ThreadPoolExecutor() as ex:
+                futures = []
+                for b in blocks:
+                    futures.append(ex.submit(self.pick, item, b))
+                winners = []
+                for f in futures:
+                    winners.append(f.result())
+            idx = [w for w in winners if w is not None]
+            if not idx:
+                return not_found
+        final = self.pick(item, idx)
+        return self.groups[final] if final is not None else not_found  # 変更:辞書ごと返す
+
+
+def read_model_output2(text):
+    decoder = json.JSONDecoder()
+    data = None
+    text = text.replace("“", '"').replace("”", '"')   # 全角のクォート → "
+    if '"' not in text:                               # " が1つも無いときだけ
+        text = text.replace("'", '"')
+    text = re.sub(r",\s*}", "}", text)                # 末尾の余計なカンマを消す
+    text = re.sub(r",\s*]", "]", text)                # 末尾の余計なカンマを消す
+    for i, ch in enumerate(text):
+        if ch == "[":                           
+            try:
+                data, _ = decoder.raw_decode(text, i)  # そこからJSONとして読んでみる
+                break                           # 読めたら終了
+            except json.JSONDecodeError:
+                continue 
+    return data
+
+
+def read_model_output(text):
+    decoder = json.JSONDecoder()
+    data = None
+
+    text = text.replace("“", '"').replace("”", '"')   # 全角のクォート → "
+    if '"' not in text:                               # " が1つも無いときだけ
+        text = text.replace("'", '"')
+    text = re.sub(r",\s*}", "}", text)                # 末尾の余計なカンマを消す
+    
+    for i, ch in enumerate(text):
+        if ch == "{":                           # { を見つけるたびに
+            try:
+                data, _ = decoder.raw_decode(text, i)  # そこからJSONとして読んでみる
+                break                           # 読めたら終了
+            except json.JSONDecodeError:
+                continue                        # 読めなければ次の { へ
+    return data
